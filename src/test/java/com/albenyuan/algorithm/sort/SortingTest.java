@@ -17,7 +17,7 @@ public class SortingTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private Integer length = 100000;
+    private Integer length = 10000;
 
     private long before = 0l;
 
@@ -39,14 +39,14 @@ public class SortingTest {
         list = new ArrayList<>(DATA);
         before = System.currentTimeMillis();
         logger.info("list  :{}", list);
-        logger.info("before:{}", before);
+//        logger.info("before:{}", before);
     }
 
     @After
     public void after() {
         after = System.currentTimeMillis();
         logger.info("result:{}", list);
-        logger.info("after  :{}", after);
+//        logger.info("after  :{}", after);
         logger.info("times :{}", after - before);
     }
 
@@ -64,5 +64,10 @@ public class SortingTest {
     @Test
     public void testSelectionSort() throws Exception {
         SortUtil.selectionSort(list);
+    }
+
+    @Test
+    public void mergeSort() throws Exception {
+        list = SortUtil.mergeSort(list);
     }
 }

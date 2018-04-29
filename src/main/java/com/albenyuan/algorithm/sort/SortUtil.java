@@ -1,5 +1,9 @@
 package com.albenyuan.algorithm.sort;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,6 +13,8 @@ import java.util.List;
  * @Date 2018-04-28 15:11
  */
 public class SortUtil {
+
+    private static Logger logger = LoggerFactory.getLogger(SortUtil.class);
 
     /**
      * 插入排序
@@ -90,4 +96,45 @@ public class SortUtil {
         }
         return list;
     }
+
+    public static List<Integer> mergeSort(List<Integer> list) {
+        int size = list.size();
+        if (size > 1) {
+            int middle = size / 2;
+            List<Integer> left = list.subList(0, middle);
+            List<Integer> right = list.subList(middle, size);
+            list = merge(mergeSort(left), mergeSort(right));
+        }
+        return list;
+    }
+
+    private static List<Integer> merge(List<Integer> left, List<Integer> right) {
+        int rightSize = right.size();
+        int leftSize = left.size();
+        int size = leftSize + rightSize;
+        List<Integer> list = new ArrayList<>(size);
+        int leftIndex = 0, rightIndex = 0;
+        while (leftIndex + rightIndex < size) {
+            if (rightIndex == rightSize) {
+                list.addAll(left.subList(leftIndex, leftSize));
+                break;
+            }
+            if (leftIndex == leftSize) {
+                list.addAll(right.subList(rightIndex, rightSize));
+                break;
+            }
+            int leftValue = left.get(leftIndex);
+            int rightValue = right.get(rightIndex);
+
+            if (leftValue < rightValue) {
+                list.add(leftValue);
+                leftIndex++;
+            } else {
+                list.add(rightValue);
+                rightIndex++;
+            }
+        }
+        return list;
+    }
+
 }
