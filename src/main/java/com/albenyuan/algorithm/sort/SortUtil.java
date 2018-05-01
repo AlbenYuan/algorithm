@@ -122,6 +122,46 @@ public class SortUtil {
         return list;
     }
 
+    public List<Integer> radixSort(List<Integer> list) {
+        int max = list.get(0);
+        int size = list.size();
+        // 查询最大值
+        for (int i = 1; i < size; i++) {
+            if (list.get(i) > max) {
+                max = list.get(i);
+            }
+        }
+        int times = 0;
+        while (max > 0) {
+            max /= 10;
+            times++;
+        }
+
+        List<ArrayList> dataList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            dataList.add(new ArrayList<ArrayList<Integer>>());
+        }
+
+        for (int i = 0; i < times; i++) {
+            for (int j = 0; j < size; j++) {
+                int x = list.get(j) % (int) Math.pow(10, i + 1) / (int) Math.pow(10, i);
+                ArrayList<Integer> subList = dataList.get(x);
+                subList.add(list.get(j));
+                dataList.set(x, subList);
+            }
+            int count = 0;
+            for (int k = 0; k < 10; k++) {
+                while (dataList.get(k).size() > 0) {
+                    ArrayList<Integer> subList = dataList.get(k);
+                    list.set(count, subList.get(0));
+                    subList.remove(0);
+                    count++;
+                }
+            }
+        }
+        return list;
+    }
+
 
     public static List<Integer> mergeSort(List<Integer> list) {
         int size = list.size();

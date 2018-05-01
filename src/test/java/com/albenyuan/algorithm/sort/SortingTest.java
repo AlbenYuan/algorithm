@@ -75,4 +75,10 @@ public class SortingTest {
     public void quickSort() throws Exception {
         list = SortUtil.quickSort(list);
     }
+
+
+    @Test
+    public void radixSort() throws Exception {
+        list = SortUtil.quickSort(list);
+    }
 }
