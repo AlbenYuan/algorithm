@@ -70,4 +70,9 @@ public class SortingTest {
     public void mergeSort() throws Exception {
         list = SortUtil.mergeSort(list);
     }
+
+    @Test
+    public void quickSort() throws Exception {
+        list = SortUtil.quickSort(list);
+    }
 }

@@ -97,6 +97,32 @@ public class SortUtil {
         return list;
     }
 
+    public static List<Integer> quickSort(List<Integer> list) {
+        return quickSort(list, 0, list.size() - 1);
+    }
+
+    public static List<Integer> quickSort(List<Integer> list, int start, int end) {
+        int pivot, p_pos, i, t;
+        if (start < end) {
+            p_pos = start;
+            pivot = list.get(p_pos);
+            for (i = start + 1; i <= end; i++)
+                if (list.get(i) < pivot) {
+                    p_pos++;
+                    t = list.get(p_pos);
+                    list.set(p_pos, list.get(i));
+                    list.set(i, t);
+                }
+            t = list.get(start);
+            list.set(start, list.get(p_pos));
+            list.set(p_pos, t);
+            quickSort(list, start, p_pos - 1);
+            quickSort(list, p_pos + 1, end);
+        }
+        return list;
+    }
+
+
     public static List<Integer> mergeSort(List<Integer> list) {
         int size = list.size();
         if (size > 1) {
