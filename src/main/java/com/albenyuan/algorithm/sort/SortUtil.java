@@ -122,7 +122,7 @@ public class SortUtil {
         return list;
     }
 
-    public List<Integer> radixSort(List<Integer> list) {
+    public static List<Integer> radixSort(List<Integer> list) {
         int max = list.get(0);
         int size = list.size();
         // 查询最大值

@@ -79,6 +79,6 @@ public class SortingTest {
 
     @Test
     public void radixSort() throws Exception {
-        list = SortUtil.quickSort(list);
+        list = SortUtil.radixSort(list);
     }
 }
