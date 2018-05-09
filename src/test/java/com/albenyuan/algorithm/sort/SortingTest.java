@@ -85,4 +85,13 @@ public class SortingTest {
     public void countSort() throws Exception {
         list = SortUtil.countSort(list);
     }
+
+
+    @Test
+    public void heapSort() throws Exception {
+        Integer[] array = new Integer[list.size()];
+        list.toArray(array);
+        SortUtil.heapSort(array);
+        list = Arrays.asList(array);
+    }
 }
