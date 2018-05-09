@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -189,12 +190,7 @@ public class SortUtil {
 
 
         // 查找最大值
-        int max = 0;
-        for (Integer v : list) {
-            if (v > max) {
-                max = v;
-            }
-        }
+        int max = getMax(list);
         // 统计出现频率
         int[] counts = new int[max + 1];
         for (Integer v : list) {
@@ -209,6 +205,19 @@ public class SortUtil {
                 list.set(index++, value);
             }
         }
+
+        return list;
+    }
+
+    /**
+     * 桶排序
+     *
+     * @param list
+     * @return
+     */
+    public static List<Integer> bucketSort(List<Integer> list) {
+        int max = getMax(list);
+        int min = getMin(list);
 
         return list;
     }
@@ -266,6 +275,35 @@ public class SortUtil {
             }
         }
         return list;
+    }
+
+
+    private static Integer getMax(List<Integer> list) {
+        Integer max = null;
+        if (!list.isEmpty()) {
+            max = list.get(0);
+            for (Integer v : list) {
+                if (v > max) {
+                    max = v;
+                }
+            }
+        }
+
+        return max;
+
+    }
+
+    private static Integer getMin(List<Integer> list) {
+        Integer min = null;
+        if (!list.isEmpty()) {
+            min = list.get(0);
+            for (Integer v : list) {
+                if (v < min) {
+                    min = v;
+                }
+            }
+        }
+        return min;
     }
 
 }
