@@ -17,7 +17,7 @@ public class SortingTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private Integer length = 10000;
+    private Integer length = 10;
 
     private long before = 0l;
 
@@ -76,9 +76,13 @@ public class SortingTest {
         list = SortUtil.quickSort(list);
     }
 
-
     @Test
     public void radixSort() throws Exception {
         list = SortUtil.radixSort(list);
+    }
+
+    @Test
+    public void countSort() throws Exception {
+        list = SortUtil.countSort(list);
     }
 }

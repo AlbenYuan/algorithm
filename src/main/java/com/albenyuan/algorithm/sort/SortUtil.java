@@ -101,6 +101,14 @@ public class SortUtil {
         return quickSort(list, 0, list.size() - 1);
     }
 
+    /**
+     * 快速排序
+     *
+     * @param list
+     * @param start
+     * @param end
+     * @return
+     */
     public static List<Integer> quickSort(List<Integer> list, int start, int end) {
         int pivot, p_pos, i, t;
         if (start < end) {
@@ -122,6 +130,12 @@ public class SortUtil {
         return list;
     }
 
+    /**
+     * 基数排序
+     *
+     * @param list
+     * @return
+     */
     public static List<Integer> radixSort(List<Integer> list) {
         int max = list.get(0);
         int size = list.size();
@@ -162,7 +176,50 @@ public class SortUtil {
         return list;
     }
 
+    /**
+     * 计数排序
+     * 1 找出最大值，
+     * 2 创建一个集合用于统计，每个数字出现的次数
+     * 3 遍历集合，根据出现的次数，重新排序数据
+     *
+     * @param list
+     * @return
+     */
+    public static List<Integer> countSort(List<Integer> list) {
 
+
+        // 查找最大值
+        int max = 0;
+        for (Integer v : list) {
+            if (v > max) {
+                max = v;
+            }
+        }
+        // 统计出现频率
+        int[] counts = new int[max + 1];
+        for (Integer v : list) {
+            counts[v]++;
+        }
+        // 重新记录数据
+        int index = 0;
+        for (int value = 0; value <= max; value++) {
+            int count = counts[value];
+            while (count > 0) {
+                count--;
+                list.set(index++, value);
+            }
+        }
+
+        return list;
+    }
+
+
+    /**
+     * 归并排序
+     *
+     * @param list
+     * @return
+     */
     public static List<Integer> mergeSort(List<Integer> list) {
         int size = list.size();
         if (size > 1) {
@@ -174,6 +231,14 @@ public class SortUtil {
         return list;
     }
 
+
+    /**
+     * 归并排序
+     *
+     * @param left
+     * @param right
+     * @return
+     */
     private static List<Integer> merge(List<Integer> left, List<Integer> right) {
         int rightSize = right.size();
         int leftSize = left.size();

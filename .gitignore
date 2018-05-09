@@ -1,7 +1,7 @@
 # Compiled class file
 *.class
-logs/
-.idea/
+logs
+.idea
 *.iml
 
 target/
