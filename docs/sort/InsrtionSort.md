@@ -1,6 +1,8 @@
 # Insertion Sort 
 插入排序，在有序序列中，插入一个数值后依然有序。
 
+ ![Insertion Sort](/docs/image/sort/InsertionSort.gif)
+
 ## 算法
 场景：已有无序序列C，包含n个数值，对C进行排序，排序后数值由大到小排列。
 
